@@ -2,8 +2,6 @@
 
 Sistema de login e produtos com laravel react
 
-Código-fonte das lives sobre [Laravel e React].<br>
-
 ## Requisitos
 
 - PHP 8.2 ou superior;
