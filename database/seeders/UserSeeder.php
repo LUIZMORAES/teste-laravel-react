@@ -14,22 +14,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::firstOrCreate(
-            ['email' => 'cesar@celke.com.br'],
-            ['name' => 'Cesar', 'email' => 'cesar@celke.com.br', 'password' => '123456A#']
-        );
-
-        User::firstOrCreate(
-            ['email' => 'kelly@celke.com.br'],
-            ['name' => 'Kelly', 'email' => 'kelly@celke.com.br', 'password' => '123456A#']
-        );
-
-        User::firstOrCreate(
-            ['email' => 'jessica@celke.com.br'],
-            ['name' => 'Jessica', 'email' => 'jessica@celke.com.br', 'password' => '123456A#']
-        );
-        User::firstOrCreate(
-            ['email' => 'gabrielly@celke.com.br'],
-            ['name' => 'Gabrielly', 'email' => 'gabrielly@celke.com.br', 'password' => '123456A#']
+            ['email' => 'lcamconsultoria@gmail.com'],
+            ['name' => 'Luiz', 'email' => 'lcamconsultoria@gmail.com', 'password' => '123456A#']
         );
     }
 }
