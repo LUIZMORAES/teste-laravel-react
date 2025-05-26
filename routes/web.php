@@ -36,10 +36,14 @@ Route::middleware('auth')->group(function () {
     route::delete('/destroy-user/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     /*===========================startProdutos=======================================*/
     Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos.index');
+    Route::get('/show-produto/{produto}', [ProdutosController::class, 'show'])->name('produtos.show');
+    Route::get('/create-produto', [ProdutosController::class, 'create'])->name('produtos.create');
+    route::post('/store-produto', [ProdutosController::class, 'store'])->name('produtos.store');
+    Route::get('/edit-produto/{produto}', [ProdutosController::class, 'edit'])->name('produtos.edit');
+    route::put('/update-produto/{produto}', [ProdutosController::class, 'update'])->name('produtos.update');
+    route::delete('/destroy-produto/{produto}', [ProdutosController::class, 'destroy'])->name('produtos.destroy');
     
-
 });
-
 /*===========================startApiProdutos=======================================*/
 Route::get('/api/produtos', [ApiProdutoController::class, 'list_produto'])->name('produtos.apiindex');
 

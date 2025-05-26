@@ -13,14 +13,10 @@ class ApiProdutoController extends Controller
      */
     public function list_produto()
     {
-        return response()->json(['mensagem' => 'Achou api e ProdutosController'], 200);
 
-        //$produtos = Produto::all();
-        // $produtos = Produto::orderByDesc('id')->paginate(10);
+        $produtos = Produto::all();
 
         return $produtos;
-
-        //return Inertia::render('Users/UserIndex', ['users' => $users]);
 
     }
 }
