@@ -26,23 +26,17 @@ class ProdutosController extends Controller
     /**
     * Display the specified resource.
     */
-    public function show(produto $produtos): Response
+    public function show(Produto $produto): Response
     {
-        return Inertia::render('Users/UserShow', ['produto' => $produtos]);
+        return Inertia::render('Produtos/ProdutoShow', ['produto' => $produto]);
     }
 
-    //     public function show(User $user): Response
-    // {
-    //     return Inertia::render('Users/UserShow', ['user' => $user]);
-    // }
-
-
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    * Show the form for creating a new resource.
+    */
+    public function create(): Response
     {
-        //
+        return Inertia::render('Produtos/ProdutoCreate');
     }
 
     /**
@@ -50,7 +44,40 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'nome' => 'required|string|max:255',
+                'descricao' => 'required|string|max:255',
+                'preco' => 'required|string|min:1|max:255',
+                'categoria' => 'required|string|min:1|max:255'
+            ],
+            [
+                'nome.required' => 'O campo nome é obrigatório!',
+                'nome.string' => 'O nome deve ser uma string válida.',
+                'nome.max' => 'O nome não pode ter mais que :max caracteres.',
+                'descricao.required' => 'O campo descricao é obrigatório.',
+                'descricao.string' => 'O descricao deve ser uma string válida.',
+                'descricao.email' => 'O descricao deve uma string válida.',
+                'descricao.max' => 'O e-mail não pode ter mais que :max caracteres.',
+                'preco.required' => 'O campo senha é obrigatório.',
+                'preco.string' => 'A senha deve ser uma string válida.',
+                'preco.min' => 'A senha não pode ter menos que :min caracteres.',
+                'preco.max' => 'A senha não pode ter mais que :max caracteres.',
+                'categoria.required' => 'O campo categoria é obrigatório!',
+                'categoria.string' => 'O categoria deve ser uma string válida.',
+                'categoria.max' => 'O categoria não pode ter mais que :max caracteres.',
+
+            ]
+        );
+
+        $produto = Produto::create([
+            'nome' => $request->nome,
+            'descricao' => $request->descricao,
+            'preco' => $request->preco,
+            'categoria' => $request->categoria,
+        ]);
+
+        return Redirect::route('produtos.show', ['produto' => $produto->id])->with('success', 'Produto Cadastrado com sucesso!');
     }
 
      /**
